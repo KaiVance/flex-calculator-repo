@@ -7,21 +7,28 @@ import java.awt.event.*;
 
 class Flex extends JFrame{
     
+    //panel for user input and calculate button
     private JPanel dateJPanel;
     
+    //labels for start date, end date, and money
     private JLabel startJLabel;
     private JLabel endJLabel;
     private JLabel moneyJLabel;
     
+    //calculate button
     private JButton calculateJButton;
     
+    //text area where budget will be displayed
     private JTextArea calculateJTextArea;
     
+    //text field for user money
     private JTextField moneyJTextField;
     
+    //dropdown for months
     private JComboBox startJComboBox;
     private JComboBox endJComboBox;
     
+    //dropdown for days
     private JComboBox startDayJComboBox;
     private JComboBox endDayJComboBox;
     
@@ -41,12 +48,14 @@ class Flex extends JFrame{
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
         
+        //user input panel
         dateJPanel = new JPanel();
         dateJPanel.setLayout(null);
         dateJPanel.setBorder(new TitledBorder("Flex Calculator Input"));
         dateJPanel.setBounds(20,6,460,200);
         contentPane.add(dateJPanel);
         
+        //labels
         startJLabel = new JLabel();
         startJLabel.setBounds(20,50,80,21);
         startJLabel.setText("Start Date:");
@@ -62,11 +71,13 @@ class Flex extends JFrame{
         moneyJLabel.setText("Money:");
         dateJPanel.add(moneyJLabel);
         
+        //money text field
         moneyJTextField = new JTextField();
         moneyJTextField.setBounds(350,50,80,21);
         moneyJTextField.setHorizontalAlignment(JTextField.LEFT);
         dateJPanel.add(moneyJTextField);
         
+        //button
         calculateJButton = new JButton();
         calculateJButton.setBounds(300,100,125,50);
         calculateJButton.setText("calculate");
@@ -80,11 +91,13 @@ class Flex extends JFrame{
             }
         );
         
+        //results text area
         calculateJTextArea = new JTextArea();
         calculateJTextArea.setBounds(150,210,200,50);
         calculateJTextArea.setEditable(false);
         contentPane.add(calculateJTextArea);
         
+        //dropdown menus
         startJComboBox = new JComboBox<String>(MONTHS);
         startJComboBox.setBounds(100,50,80,21);
         dateJPanel.add(startJComboBox);
@@ -101,6 +114,7 @@ class Flex extends JFrame{
         endDayJComboBox.setBounds(200,120,80,21);
         dateJPanel.add(endDayJComboBox);
         
+        //window prefrences
         setTitle("Flex Calculator");
         setSize(500,300);
         setVisible(true);
@@ -113,6 +127,7 @@ class Flex extends JFrame{
         double spendWeek;
         double spendDay;
         
+        //getting info from user
         Double money = Double.parseDouble(moneyJTextField.getText());
         
         int startMonth = Integer.parseInt(startJComboBox.getSelectedItem().toString());
@@ -121,6 +136,7 @@ class Flex extends JFrame{
         int startDay = Integer.parseInt(startDayJComboBox.getSelectedItem().toString());
         int endDay = Integer.parseInt(endDayJComboBox.getSelectedItem().toString());
         
+        //output format
         DecimalFormat currency = new DecimalFormat("$0.00");
         
         int count = 0;
@@ -169,6 +185,7 @@ class Flex extends JFrame{
         
         week = count/7.0;
         
+        //if days do not add to a week, just divide by 1
         if (week < 1) 
             spendWeek = money/1;
         else
