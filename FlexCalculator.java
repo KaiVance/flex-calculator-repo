@@ -142,6 +142,11 @@ class Flex extends JFrame{
         DecimalFormat currency = new DecimalFormat("$0.00");
         
         int count = 0;
+
+        if(startIndex>endIndex){
+            endIndex = (MONTHS.length + 1) - startIndex + endIndex;
+            startIndex = 0;
+        }
         
         //goes from start month until end month
         for (int i = startIndex; i <= endIndex; i++) {
