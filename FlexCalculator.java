@@ -138,16 +138,15 @@ class Flex extends JFrame{
         int startDayIndex = startDayJComboBox.getSelectedIndex() + 1;
         int endDayIndex = endDayJComboBox.getSelectedIndex() + 1;
         
-        int startDay = Integer.parseInt(startDayJComboBox.getSelectedItem().toString());
-        int endDay = Integer.parseInt(endDayJComboBox.getSelectedItem().toString());
-        
         //output format
         DecimalFormat currency = new DecimalFormat("$0.00");
         
         int count = 0;
         
+        //goes from start month until end month
         for (int i = startIndex; i <= endIndex; i++) {
             
+            //if months are the same, go until end day
             if(startIndex==endIndex){
                 for (int j = startDayIndex; j <= endDayIndex; j++) {
                     count++;
@@ -155,6 +154,7 @@ class Flex extends JFrame{
                 break;
             }
             
+            //switch based on month
             switch(i){
                 case 1:
                 case 3:
@@ -184,20 +184,25 @@ class Flex extends JFrame{
                     break;
                 
             }//end switch
+
+            //sets day back to 1 when entering new month
             startDayIndex = 1;
             
         }//end for loop
-        
+
         week = count/7.0;
         
+        //weekly budget
         //if days do not add to a week, just divide by 1
         if (week < 1) 
             spendWeek = money/1;
         else
             spendWeek = money/week;
         
+        //daily budget
         spendDay = money/count;
         
+        //output
         calculateJTextArea.append(" Weekly Budget: "+currency.format(spendWeek)+"\n Daily Budget: "+currency.format(spendDay));
         
         
