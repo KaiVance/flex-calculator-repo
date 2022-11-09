@@ -32,10 +32,10 @@ class Flex extends JFrame{
     private JComboBox startDayJComboBox;
     private JComboBox endDayJComboBox;
     
-    private final String[] MONTHS = {"1","2", "3", "4", "5", "6", 
-                                "7", "8", "9", "10", "11", "12"};
+    private final String[] MONTHS = {"Jan","Feb", "Mar", "April", "May", "June", 
+                                "July", "Aug", "Sep", "Oct", "Nov", "Dec"};
     
-    final String[] DAYS = {"1","2","3","4","5","6","7","8","9","10",
+    private final String[] DAYS = {"1","2","3","4","5","6","7","8","9","10",
                             "11","12","13","14","15","16","17",
                             "18","19","20","21","22","23","24",
                             "25","26","27","28","29","30","31"};
@@ -129,9 +129,14 @@ class Flex extends JFrame{
         
         //getting info from user
         Double money = Double.parseDouble(moneyJTextField.getText());
-        
-        int startMonth = Integer.parseInt(startJComboBox.getSelectedItem().toString());
-        int endMonth = Integer.parseInt(endJComboBox.getSelectedItem().toString());
+
+        //index of selected month
+        int startIndex = startJComboBox.getSelectedIndex() + 1;
+        int endIndex = endJComboBox.getSelectedIndex() + 1;
+
+        //index of selected day
+        int startDayIndex = startDayJComboBox.getSelectedIndex() + 1;
+        int endDayIndex = endDayJComboBox.getSelectedIndex() + 1;
         
         int startDay = Integer.parseInt(startDayJComboBox.getSelectedItem().toString());
         int endDay = Integer.parseInt(endDayJComboBox.getSelectedItem().toString());
@@ -141,10 +146,10 @@ class Flex extends JFrame{
         
         int count = 0;
         
-        for (int i = startMonth; i <= endMonth; i++) {
+        for (int i = startIndex; i <= endIndex; i++) {
             
-            if(startMonth==endMonth){
-                for (int j = startDay; j <= endDay; j++) {
+            if(startIndex==endIndex){
+                for (int j = startDayIndex; j <= endDayIndex; j++) {
                     count++;
                 }
                 break;
@@ -158,7 +163,7 @@ class Flex extends JFrame{
                 case 8:
                 case 10:
                 case 12:
-                    for (int j = startDay; j <= 31; j++) {
+                    for (int j = startDayIndex; j <= 31; j++) {
                         count++;
                     }
                     break;
@@ -167,19 +172,19 @@ class Flex extends JFrame{
                 case 6:
                 case 9:
                 case 11:
-                    for (int j = startDay; j <= 30; j++) {
+                    for (int j = startDayIndex; j <= 30; j++) {
                         count++;
                     }
                     break;
                     
                 case 2:
-                    for (int j = startDay; j <= 28; j++) {
+                    for (int j = startDayIndex; j <= 28; j++) {
                         count++;
                     }
                     break;
                 
             }//end switch
-            startDay = 1;
+            startDayIndex = 1;
             
         }//end for loop
         
