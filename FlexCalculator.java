@@ -105,7 +105,7 @@ class Flex extends JFrame{
         startDayJComboBox = new JComboBox<String>(DAYS);
         startDayJComboBox.setBounds(200,50,80,21);
         dateJPanel.add(startDayJComboBox);
-        
+
         endJComboBox = new JComboBox<String>(MONTHS);
         endJComboBox.setBounds(100,120,80,21);
         dateJPanel.add(endJComboBox);
@@ -143,8 +143,8 @@ class Flex extends JFrame{
         
         int count = 0;
 
-        if(startIndex>endIndex){
-            endIndex = (MONTHS.length + 1) - startIndex + endIndex;
+        if(startIndex > endIndex){
+            endIndex = (MONTHS.length+1) - startIndex + endIndex;
             startIndex = 0;
         }
         
@@ -152,7 +152,7 @@ class Flex extends JFrame{
         for (int i = startIndex; i <= endIndex; i++) {
             
             //if months are the same, go until end day
-            if(startIndex==endIndex){
+            if(i==endIndex){
                 for (int j = startDayIndex; j <= endDayIndex; j++) {
                     count++;
                 }
@@ -190,7 +190,7 @@ class Flex extends JFrame{
                 
             }//end switch
 
-            //sets day back to 1 when entering new month
+            //sets day back to 0 when entering new month
             startDayIndex = 1;
             
         }//end for loop
