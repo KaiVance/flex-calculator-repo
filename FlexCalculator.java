@@ -134,6 +134,8 @@ class Flex extends JFrame{
         int startIndex = startJComboBox.getSelectedIndex() + 1;
         int endIndex = endJComboBox.getSelectedIndex() + 1;
 
+        //make thing to store origional index
+
         //index of selected day
         int startDayIndex = startDayJComboBox.getSelectedIndex() + 1;
         int endDayIndex = endDayJComboBox.getSelectedIndex() + 1;
@@ -143,14 +145,21 @@ class Flex extends JFrame{
         
         int count = 0;
 
+        //instead of changing starting index back to 1, extend end index and have it loop back to jan
         if(startIndex > endIndex){
-            endIndex = (MONTHS.length+1) - startIndex + endIndex;
-            startIndex = 0;
+            int extendEnd = (MONTHS.length + 1) - startIndex + endIndex;
+            endIndex = startIndex + extendEnd;
         }
         
         //goes from start month until end month
         for (int i = startIndex; i <= endIndex; i++) {
             
+            //if i is greater than 12, loop back to 1 and subtract end index to keep the same dist
+            if(i > 12){
+                endIndex = endIndex - i;
+                i = 1;
+            }
+
             //if months are the same, go until end day
             if(i==endIndex){
                 for (int j = startDayIndex; j <= endDayIndex; j++) {
