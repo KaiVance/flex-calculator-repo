@@ -1,7 +1,6 @@
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import javax.swing.JComboBox;
 import java.text.DecimalFormat;
 import java.awt.event.*;
 
@@ -31,7 +30,7 @@ class Flex extends JFrame{
     //dropdown for days
     private JComboBox startDayJComboBox;
     private JComboBox endDayJComboBox;
-    
+
     private final String[] MONTHS = {"Jan","Feb", "Mar", "April", "May", "June", 
                                 "July", "Aug", "Sep", "Oct", "Nov", "Dec"};
     
@@ -45,6 +44,7 @@ class Flex extends JFrame{
     }
     
     private void createUserInterface(){
+
         Container contentPane = getContentPane();
         contentPane.setLayout(null);
         
@@ -226,9 +226,12 @@ class Flex extends JFrame{
 
 public class FlexCalculator {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Flex fc = new Flex();
         fc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //ImageIcon img = new ImageIcon("/Users/kaivance/Documents/GitHub/flex-calculator-repo/resources/flexunator.png");
+        ImageIcon img = new ImageIcon("resources/flexunator.png");
+        fc.setIconImage(img.getImage());
     }
     
 }
