@@ -1,8 +1,14 @@
 import java.awt.*;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.text.DecimalFormat;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.awt.Desktop;
 
 class Flex extends JFrame{
     
@@ -24,12 +30,12 @@ class Flex extends JFrame{
     private JTextField moneyJTextField;
     
     //dropdown for months
-    private JComboBox startJComboBox;
-    private JComboBox endJComboBox;
+    private JComboBox<String> startJComboBox;
+    private JComboBox<String> endJComboBox;
     
     //dropdown for days
-    private JComboBox startDayJComboBox;
-    private JComboBox endDayJComboBox;
+    private JComboBox<String> startDayJComboBox;
+    private JComboBox<String> endDayJComboBox;
 
     private final String[] MONTHS = {"Jan","Feb", "Mar", "April", "May", "June", 
                                 "July", "Aug", "Sep", "Oct", "Nov", "Dec"};
@@ -229,8 +235,15 @@ public class FlexCalculator {
     public static void main(String[] args){
         Flex fc = new Flex();
         fc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //ImageIcon img = new ImageIcon("/Users/kaivance/Documents/GitHub/flex-calculator-repo/resources/flexunator.png");
-        ImageIcon img = new ImageIcon("resources/flexunator.png");
+        //ImageIcon img = new ImageIcon("//Users//kaivance//Documents//GitHub//flex-calculator-repo//resources//flexunator.png");
+        //ImageIcon img = new ImageIcon("resources//flexunator.png");
+        BufferedImage bf = null;
+        try{
+            bf = ImageIO.read(new File("resources//flexunator.png"));
+        }catch(IOException e){}
+
+        ImageIcon img = new ImageIcon(bf);
+        //fc.getApplication().setDockIconImage(img);
         fc.setIconImage(img.getImage());
     }
     
