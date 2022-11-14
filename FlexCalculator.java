@@ -1,5 +1,4 @@
 import java.awt.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.*;
@@ -8,7 +7,6 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.Desktop;
 
 class Flex extends JFrame{
     
@@ -235,15 +233,12 @@ public class FlexCalculator {
     public static void main(String[] args){
         Flex fc = new Flex();
         fc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //ImageIcon img = new ImageIcon("//Users//kaivance//Documents//GitHub//flex-calculator-repo//resources//flexunator.png");
-        //ImageIcon img = new ImageIcon("resources//flexunator.png");
         BufferedImage bf = null;
         try{
             bf = ImageIO.read(new File("resources//flexunator.png"));
         }catch(IOException e){}
 
         ImageIcon img = new ImageIcon(bf);
-        //fc.getApplication().setDockIconImage(img);
         fc.setIconImage(img.getImage());
     }
     
